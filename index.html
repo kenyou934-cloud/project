@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kenzen L. Miñao | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <canvas id="neonRain"></canvas>
+
+  <div class="hamburger" id="hamburger">&#9776;</div>
+
+  <div class="container">
+    <aside class="sidebar" id="sidebar">
+      <h2>Kenzen L. Miñao</h2>
+      <nav>
+        <ul>
+          <li data-target="home" class="active">Home</li>
+          <li data-target="about">About Me</li>
+          <li data-target="portfolio">My Projects</li>
+          <li data-target="contact">Contact</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <section id="home" class="active">
+        <div class="intro">
+          <h1>Hello, I'm <span>Kenzen L. Miñao</span></h1>
+          <p>Computer Science - 1st Year</p>
+          <div class="buttons">
+            <a href="#" class="btn about">About Me</a>
+            <a href="#" class="btn portfolio">Projects</a>
+          </div>
+        </div>
+      </section>
+    
+      <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I’m Kenzen L. Miñao, Game Developer in roblox, Backend Developer</p>
+      </section>
+
+      <section id="portfolio">
+  <h2>My Projects</h2>
+  <div class="search-container">
+    <input type="text" id="projectSearch" placeholder="🔍Search projects..." />
+  </div>
+
+  <div class="project-gallery">
+    <div class="project-card" data-title="Spuid Game">
+      <img src="spuid game.webp" alt="Spuid Game">
+      <h3>Spuid Game</h3>
+      <p>survive the game to win a money!</p>
+      <a href="https://www.roblox.com/games/124740893103766/Spuid-Game" target="_blank" class="view-btn">View Project</a></div>
+
+    <div class="project-card" data-title="Survival Nights">
+      <img src="survival.png" alt="Survival Nights">
+      <h3>Survival Nights</h3>
+      <p>Survive the darkness until morning!</p>
+      <a href="https://www.roblox.com/games/123380312019450/Survival-Nights" target="_blank" class="view-btn">View Project</a>
+    </div>
+
+    <div class="project-card" data-title="REDZONE BETA (UPDATE v2.5)">
+      <img src="redzone.png" alt="REDZONE BETA (UPDATE v2.5)">
+      <h3>REDZONE BETA (UPDATE v2.5)</h3>
+      <p>Battle for control, unlock skins, and dominate the field.</p>
+      <a href="https://www.roblox.com/games/136999271904626/REDZONE-BETA-UPDATE-v2-5" target="_blank" class="view-btn">View Project</a>
+     </div>
+     </div>
+      </section>
+
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:Minaokenzen344@gmail.com">Minaokenzen344@gmail.com</a></p>
+        <p>Phone: +639317741933</p>
+        <p>Let's connect and create something amazing together!</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
