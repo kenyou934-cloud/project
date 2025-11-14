@@ -109,4 +109,25 @@ window.addEventListener('resize', () => {
   hamburger.addEventListener("click", () => {
     sidebar.classList.toggle("active");
   });
+
+  const themeToggle = document.getElementById("themeToggle");
+  const themeIcon = document.querySelector(".theme-icon");
+  
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light") {
+    document.body.classList.add("light-mode");
+    themeIcon.textContent = "☀️";
+  }
+
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+    
+    if (document.body.classList.contains("light-mode")) {
+      themeIcon.textContent = "☀️";
+      localStorage.setItem("theme", "light");
+    } else {
+      themeIcon.textContent = "🌙";
+      localStorage.setItem("theme", "dark");
+    }
+  });
 });
