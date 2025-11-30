@@ -4,84 +4,184 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kenzen L. Miñao | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Portfolio.</div>
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+  </header>
 
-  <canvas id="neonRain"></canvas>
-
-  <div class="hamburger" id="hamburger">&#9776;</div>
-  <div class="theme-toggle" id="themeToggle">
-    <span class="theme-icon">🌙</span>
-  </div>
-
-  <div class="container">
-    <aside class="sidebar" id="sidebar">
-      <h2>Kenzen L. Miñao</h2>
-      <nav>
-        <ul>
-          <li data-target="home" class="active">Home</li>
-          <li data-target="about">About Me</li>
-          <li data-target="portfolio">My Projects</li>
-          <li data-target="contact">Contact</li>
-        </ul>
-      </nav>
-    </aside>
-
-    <main class="main">
-      <section id="home" class="active">
-        <div class="intro">
-          <h1>Hello, I'm <span>Kenzen L. Miñao</span></h1>
-          <p>Computer Science - 1st Year</p>
-          <div class="buttons">
-            <a href="#" class="btn about">About Me</a>
-            <a href="#" class="btn portfolio">Projects</a>
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <p class="greeting">Hello, It's Me</p>
+          <h1 class="name">Kenzen L. Miñao</h1>
+          <h2 class="title">And I'm a <span class="highlight">Game Developer</span></h2>
+          <p class="description">
+            Passionate game developer specializing in Roblox game development. I create immersive gaming experiences that captivate players and bring creative visions to life.
+          </p>
+          <div class="social-links">
+            <a href="mailto:Minaokenzen344@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.roblox.com/users/profile" target="_blank" class="social-icon"><i class="fas fa-gamepad"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+          </div>
+          <a href="#contact" class="btn-primary">Contact Me</a>
+        </div>
+        <div class="hero-image">
+          <div class="hexagon-wrapper">
+            <div class="hexagon">
+              <div class="hexagon-inner">
+                <img src="ken.jpg" alt="Kenzen L. Miñao">
+              </div>
+            </div>
+            <div class="hexagon-glow"></div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="about-container">
+        <div class="about-image">
+          <div class="hexagon-small">
+            <div class="hexagon-inner-small">
+              <i class="fas fa-code"></i>
+            </div>
+          </div>
+        </div>
+        <div class="about-text">
+          <h2>About <span class="highlight">Me</span></h2>
+          <h3>Game Developer & Backend Developer</h3>
+          <p>
+            I'm Kenzen L. Miñao, a first-year Computer Science student with a passion for game development. 
+            I specialize in creating engaging Roblox games. My goal is to combine creativity with technical skills to build memorable gaming experiences 
+            that players love. I'm constantly learning and improving my craft to deliver high-quality projects.
+          </p>
+          <a href="#projects" class="btn-outline">View Projects</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <h2 class="section-title">Our <span class="highlight">Services</span></h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-gamepad"></i>
+          </div>
+          <h3>Game Development</h3>
+          <p>Creating immersive and engaging Roblox games with unique gameplay mechanics and stunning visuals.</p>
+          <a href="#projects" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-paint-brush"></i>
+          </div>
+          <h3>Game Design</h3>
+          <p>Designing captivating game worlds, mechanics, and player experiences that keep users engaged.</p>
+          <a href="#projects" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <h2 class="section-title">Latest <span class="highlight">Projects</span></h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">
+            <img src="spuid game.webp" alt="Spuid Game">
+            <div class="project-overlay">
+              <h3>Spuid Game</h3>
+              <p>Survive the game to win money!</p>
+              <a href="https://www.roblox.com/games/124740893103766/Spuid-Game" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="survival.png" alt="Survival Nights">
+            <div class="project-overlay">
+              <h3>Survival Nights</h3>
+              <p>Survive the darkness until morning!</p>
+              <a href="https://www.roblox.com/games/123380312019450/Survival-Nights" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="redzone.png" alt="REDZONE BETA">
+            <div class="project-overlay">
+              <h3>REDZONE BETA</h3>
+              <p>Battle for control and dominate!</p>
+              <a href="https://www.roblox.com/games/136999271904626/REDZONE-BETA-UPDATE-v2-5" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     
-      <section id="about">
-        <h2>About Me</h2>
-        <p>Hello! I’m Kenzen L. Miñao, Game Developer in roblox, Backend Developer</p>
-      </section>
+    <section id="contact" class="contact">
+      <h2 class="section-title">Contact <span class="highlight">Me!</span></h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Email</h4>
+              <p>Minaokenzen344@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h4>Phone</h4>
+              <p>+639317741933</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Status</h4>
+              <p>Computer Science - 1st Year</p>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+          </div>
+          <input type="text" placeholder="Subject" required>
+          <textarea placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit" class="btn-primary">Send Message <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </section>
+  </main>
 
-      <section id="portfolio">
-  <h2>My Projects</h2>
-  <div class="search-container">
-    <input type="text" id="projectSearch" placeholder="🔍Search projects..." />
-  </div>
-
-  <div class="project-gallery">
-    <div class="project-card" data-title="Spuid Game">
-      <img src="spuid game.webp" alt="Spuid Game">
-      <h3>Spuid Game</h3>
-      <p>survive the game to win a money!</p>
-      <a href="https://www.roblox.com/games/124740893103766/Spuid-Game" target="_blank" class="view-btn">View Project</a></div>
-
-    <div class="project-card" data-title="Survival Nights">
-      <img src="survival.png" alt="Survival Nights">
-      <h3>Survival Nights</h3>
-      <p>Survive the darkness until morning!</p>
-      <a href="https://www.roblox.com/games/123380312019450/Survival-Nights" target="_blank" class="view-btn">View Project</a>
-    </div>
-
-    <div class="project-card" data-title="REDZONE BETA (UPDATE v2.5)">
-      <img src="redzone.png" alt="REDZONE BETA (UPDATE v2.5)">
-      <h3>REDZONE BETA (UPDATE v2.5)</h3>
-      <p>Battle for control, unlock skins, and dominate the field.</p>
-      <a href="https://www.roblox.com/games/136999271904626/REDZONE-BETA-UPDATE-v2-5" target="_blank" class="view-btn">View Project</a>
-     </div>
-     </div>
-      </section>
-
-
-      <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:Minaokenzen344@gmail.com">Minaokenzen344@gmail.com</a></p>
-        <p>Phone: +639317741933</p>
-        <p>Let's connect and create something amazing together!</p>
-      </section>
-    </main>
-  </div>
+  <footer>
+    <p>Copyright &copy; 2024 by Kenzen L. Miñao | All Rights Reserved.</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>

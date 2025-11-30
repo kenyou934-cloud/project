@@ -1,133 +1,146 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const navItems = document.querySelectorAll("nav ul li[data-target]");
-  const buttons = document.querySelectorAll(".btn");
-  const sections = document.querySelectorAll("main > section");
-  const searchInput = document.getElementById("projectSearch");
-  const projectList = document.querySelectorAll(".project-list li");
-  const sidebar = document.getElementById("sidebar");
-  const hamburger = document.getElementById("hamburger");
+  setTimeout(() => {
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+    const navItems = document.querySelectorAll(".nav-links a");
+    const sections = document.querySelectorAll("section");
+    const header = document.querySelector("header");
 
-  function showSection(id) {
-    sections.forEach(section => {
-      section.classList.toggle("active", section.id === id);
-    });
+    if (hamburger && navLinks) {
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    }
+
     navItems.forEach(item => {
-      item.classList.toggle("active", item.getAttribute("data-target") === id);
+      item.addEventListener("click", () => {
+        if (navLinks) navLinks.classList.remove("active");
+      });
     });
-  }
 
-  showSection("home");
-  
-  navItems.forEach(item => {
-    item.addEventListener("click", () => {
-      const targetId = item.getAttribute("data-target");
-      showSection(targetId);
+    function updateActiveNav() {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (scrollY >= sectionTop - 200) {
+          current = section.getAttribute("id");
+        }
+      });
 
-      if (window.innerWidth <= 768) {
-        sidebar.classList.remove("active");
-      }
-    });
-  });
-
-  buttons.forEach(button => {
-    button.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (button.classList.contains("about")) {
-        showSection("about");
-      } else if (button.classList.contains("portfolio")) {
-        showSection("portfolio");
-      }
-      if (window.innerWidth <= 768) {
-        sidebar.classList.remove("active");
-      }
-    });
-  });
-
-if (searchInput) {
-  searchInput.addEventListener("input", () => {
-    const filter = searchInput.value.toLowerCase();
-    const projectCards = document.querySelectorAll(".project-card");
-
-    projectCards.forEach(card => {
-      const title = card.getAttribute("data-title").toLowerCase();
-      card.style.display = title.includes(filter) ? "block" : "none";
-    });
-  });
-}
-
-const canvas = document.getElementById('neonRain');
-const ctx = canvas.getContext('2d');
-
-let w = canvas.width = window.innerWidth;
-let h = canvas.height = window.innerHeight;
-
-const neonLines = [];
-const neonColors = ['#3caeff', '#ff3caa', '#00ff99', '#fffa00'];
-
-for (let i = 0; i < 150; i++) {
-  neonLines.push({
-    x: Math.random() * w,
-    y: Math.random() * h,
-    length: Math.random() * 20 + 10,
-    speed: Math.random() * 4 + 2,
-    color: neonColors[Math.floor(Math.random() * neonColors.length)],
-    width: Math.random() * 2 + 1
-  });
-}
-
-function animateNeonRain() {
-  ctx.clearRect(0, 0, w, h);
-
-  neonLines.forEach(line => {
-    ctx.beginPath();
-    ctx.strokeStyle = line.color;
-    ctx.lineWidth = line.width;
-    ctx.moveTo(line.x, line.y);
-    ctx.lineTo(line.x, line.y + line.length);
-    ctx.stroke();
-
-    line.y += line.speed;
-
-    if (line.y > h) {
-      line.y = -line.length;
-      line.x = Math.random() * w;
-      line.color = neonColors[Math.floor(Math.random() * neonColors.length)];
-      line.width = Math.random() * 2 + 1;
+      navItems.forEach(item => {
+        item.classList.remove("active");
+        if (item.getAttribute("href") === `#${current}`) {
+          item.classList.add("active");
+        }
+      });
     }
-  });
 
-  requestAnimationFrame(animateNeonRain);
-}
+    window.addEventListener("scroll", updateActiveNav);
 
-animateNeonRain();
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll > 100) {
+        if (header) header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.3)";
+      } else {
+        if (header) header.style.boxShadow = "none";
+      }
+    });
+  }, 100);
 
-window.addEventListener('resize', () => {
-  w = canvas.width = window.innerWidth;
-  h = canvas.height = window.innerHeight;
-});
+  setTimeout(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
 
-  hamburger.addEventListener("click", () => {
-    sidebar.classList.toggle("active");
-  });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+        }
+      });
+    }, observerOptions);
 
-  const themeToggle = document.getElementById("themeToggle");
-  const themeIcon = document.querySelector(".theme-icon");
-  
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "light") {
-    document.body.classList.add("light-mode");
-    themeIcon.textContent = "☀️";
-  }
+    const animateElements = document.querySelectorAll(
+      ".hero-text, .hero-image, .about-image, .about-text, .service-card, .project-card, .contact-info, .contact-form"
+    );
 
-  themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("light-mode");
-    
-    if (document.body.classList.contains("light-mode")) {
-      themeIcon.textContent = "☀️";
-      localStorage.setItem("theme", "light");
-    } else {
-      themeIcon.textContent = "🌙";
-      localStorage.setItem("theme", "dark");
+    animateElements.forEach(el => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(30px)";
+      el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+      observer.observe(el);
+    });
+
+    const style = document.createElement("style");
+    style.textContent = `
+      .animate {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+    `;
+    document.head.appendChild(style);
+
+    const hexagonGlow = document.querySelector(".hexagon-glow");
+    if (hexagonGlow) {
+      document.addEventListener("mousemove", (e) => {
+        const rect = hexagonGlow.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        hexagonGlow.style.transform = `translate(${x * 0.02}px, ${y * 0.02}px)`;
+      });
     }
-  });
+
+    function typeWriter(element, text, speed = 100) {
+      let i = 0;
+      element.innerHTML = "";
+      
+      function type() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(type, speed);
+        }
+      }
+      type();
+    }
+
+    const nameElement = document.querySelector(".name");
+    if (nameElement) {
+      const originalName = nameElement.textContent;
+      setTimeout(() => {
+        typeWriter(nameElement, originalName, 80);
+      }, 500);
+    }
+  }, 100);
+  setTimeout(() => {
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) {
+      contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        const btn = contactForm.querySelector("button");
+        const originalText = btn.innerHTML;
+        
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        btn.disabled = true;
+        
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+          btn.style.background = "var(--primary-color)";
+          btn.style.color = "var(--dark-bg)";
+          
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.style.background = "";
+            btn.style.color = "";
+            btn.disabled = false;
+            contactForm.reset();
+          }, 2000);
+        }, 1500);
+      });
+    }
+  }, 100);
 });
